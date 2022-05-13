@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sender</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+</head>
+
+<body>
+<div th:insert="navbar :: navbar"></div>
+<main role="main" class="container">
+    <div class="starter-template">
+        <h2>
+            <span th:text="Sender"></span>
+        </h2>
+    </div>
+    <form method="post" th:action="@{/sender/}" th:object="${shipmentDTO}" class="col card p-3 mb-5">
+        <div class="form-group">
+            <label for="city">City</label>
+            <input id="city" placeholder="Enter City" required type="text" th:field="*{city}"
+                   class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input id="address" placeholder="Enter Full Address" required type="text" th:field="*{address}"
+                   class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label for="tags">Tags</label>
+            <div id="tags" class="col-8">
+                <th:block th:each="tag: ${tagList}">
+                    <input type="checkbox" th:field="*{tags}"
+                    th:value="${tag.id}"
+                    th:text="${tag.name}" class="m-2"/>
+                </th:block>
+            </div>
+
+
+<!--            <select id="tags" class="form-control selectpicker" th:field="*{tags}">-->
+<!--                <option th:each="tag: ${T(com.example.demo.shipping.enums.TagName).values()}"-->
+<!--                        th:value="${tag}"-->
+<!--                        th:text="${tag}">-->
+<!--            </select>-->
+        </div>
+
+<!--        <div class="form-group">-->
+<!--            <label for="tags">Tags</label>-->
+<!--            <select id="tags" class="form-control selectpicker" th:field="*{tags}">-->
+<!--                <option th:each="tag: ${T(com.example.demo.shipping.enums.TagName).values()}"-->
+<!--                        th:value="${tag}"-->
+<!--                        th:text="${tag}">-->
+<!--            </select>-->
+<!--        </div>-->
+        <input type="submit" class="btn btn-primary" value="Create Shipment">
+    </form>
+</main>
+</body>
+</html>
