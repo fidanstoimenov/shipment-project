@@ -17,16 +17,16 @@
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct-processor/1.4.2.Final/mapstruct-processor-1.4.2.Final.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/mapstruct/mapstruct/1.4.2.Final/mapstruct-1.4.2.Final.jar" />
         </processorPath>
-        <module name="asd" />
+        <module name="shipment" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="asd" target="9" />
+      <module name="shipment" target="9" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="asd" options="-parameters" />
+      <module name="shipment" options="-parameters" />
     </option>
   </component>
 </project>
