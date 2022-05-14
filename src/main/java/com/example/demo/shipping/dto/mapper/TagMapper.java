@@ -9,8 +9,6 @@ import java.util.List;
 @Mapper
 public interface TagMapper {
 
-    TagMapper INSTANCE = Mappers.getMapper(TagMapper.class);
-
     Tag toEntity(Long id);
 
     List<Tag> toEntity(List<Long> id);

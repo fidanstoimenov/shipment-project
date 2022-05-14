@@ -11,5 +11,4 @@ public interface PostmanRepository extends JpaRepository<Postman, Long> {
     Optional<Postman> findPostmanById(Long id);
 
     List<Postman> findAll();
-
 }

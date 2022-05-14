@@ -1,6 +1,6 @@
 package com.example.demo.shipping.dto.mapper;
 
-import com.example.demo.shipping.dto.ShipmentDTO;
+import com.example.demo.shipping.dto.ShipmentRequestDTO;
 import com.example.demo.shipping.entity.Shipment;
 import org.mapstruct.*;
 import org.mapstruct.factory.Mappers;
@@ -17,7 +17,7 @@ public interface ShipmentMapper {
             @Mapping(target = "postman.id",         source = "postmanId"),
             @Mapping(target = "sender.id",          source = "senderId")
     })
-    Shipment toEntity(ShipmentDTO dto, Long postmanId, Long senderId);
+    Shipment toEntity(ShipmentRequestDTO dto, Long postmanId, Long senderId);
 
     @AfterMapping
     default void afterMapping(@MappingTarget Shipment shipment) {

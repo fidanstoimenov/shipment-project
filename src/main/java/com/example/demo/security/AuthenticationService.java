@@ -4,39 +4,32 @@ import com.example.demo.shipping.entity.Postman;
 import com.example.demo.shipping.entity.Sender;
 import com.example.demo.shipping.repository.PostmanRepository;
 import com.example.demo.shipping.repository.SenderRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class AuthenticationService {
 
-    @Autowired
-    private PostmanRepository postmanRepository;
-
-    @Autowired
-    private SenderRepository senderRepository;
+    private final PostmanRepository postmanRepository;
+    private final SenderRepository senderRepository;
 
     public Postman postman() {
-        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if (principal instanceof User) {
-            User user = (User) principal;
-            return postmanRepository.findPostmanById(user.getUserId()).orElseThrow(RuntimeException::new);
-        }
-
-        throw new RuntimeException();
+        return postmanRepository.findPostmanById(user().getUserId()).orElseThrow(RuntimeException::new);
     }
 
     public Sender sender() {
+        return senderRepository.findSenderById(user().getUserId()).orElseThrow(RuntimeException::new);
+    }
+
+    public User user() {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         if (principal instanceof User) {
-            User user = (User) principal;
-            return senderRepository.findSenderById(user.getUserId()).orElseThrow(RuntimeException::new);
+            return (User) principal;
         }
 
         throw new RuntimeException();
     }
-
 }

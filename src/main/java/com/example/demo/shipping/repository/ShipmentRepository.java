@@ -10,5 +10,4 @@ public interface ShipmentRepository extends JpaRepository<Shipment, Long> {
 
     @Query(value = "SELECT s FROM Shipment s inner join s.postman p where p.id = :id")
     List<Shipment> retrieveShipmentsByPostmanId(Long id);
-
 }

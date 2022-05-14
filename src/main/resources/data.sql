@@ -1,8 +1,8 @@
-INSERT INTO SENDER (id, name, surname, email)
-VALUES (10000, 'Olivier', 'Peters', 'olivierpeters@gmail.com');
+INSERT INTO SENDER (id, name, surname, phone_number)
+VALUES (10000, 'Olivier', 'Peters', '+1 202-918-2132');
 
-INSERT INTO POSTMAN (id, name, surname)
-VALUES (10000, 'Kade', 'Richardson');
+INSERT INTO POSTMAN (id, name, surname, phone_number)
+VALUES (10000, 'Kade', 'Richardson', '+1 507-597-3488');
 
 INSERT INTO SHIPMENT (id, sender_id, postman_id)
 VALUES (10000, 10000, 10000);

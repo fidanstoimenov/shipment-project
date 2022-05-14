@@ -8,5 +8,4 @@ import java.util.Optional;
 public interface SenderRepository extends JpaRepository<Sender, Long> {
 
     Optional<Sender> findSenderById(Long id);
-
 }

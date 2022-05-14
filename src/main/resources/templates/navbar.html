@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>NavigationBar</title>
@@ -12,9 +13,12 @@
             <a class="navbar-brand" th:href="@{/}">Shipping</a>
         </div>
         <ul class="nav navbar-nav">
-            <li><a class="nav-link" th:href="@{/logout}">Logout</a></li>
-            <li><a class="nav-link" th:href="@{/sender}">Sender</a></li>
-            <li><a class="nav-link" th:href="@{/postman}">Postman</a></li>
+            <li sec:authorize="isAuthenticated()"><a class="nav-link" th:href="@{/sender}">Sender</a></li>
+            <li sec:authorize="isAuthenticated()"><a class="nav-link" th:href="@{/postman}">Postman</a></li>
+            <li sec:authorize="!isAuthenticated()"><a class="nav-link" th:href="@{/register}">Register</a></li>
+            <li sec:authorize="!isAuthenticated()"><a class="nav-link" th:href="@{/login}">Login</a></li>
+            <li sec:authorize="isAuthenticated()"><a class="nav-link" th:href="@{/update}">Update Password</a></li>
+            <li sec:authorize="isAuthenticated()"><a class="nav-link" th:href="@{/logout}">Logout</a></li>
         </ul>
     </div>
 </nav>

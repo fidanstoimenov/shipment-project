@@ -34,13 +34,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(customAuthenticationProvider);
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
-        http.exceptionHandling().accessDeniedPage("/403");
+        http.formLogin()
+                .and()
+                    .httpBasic()
+                .and()
+                    .authorizeRequests()
+                        .antMatchers("/", "/register")
+                        .permitAll()
+                .and()
+                    .exceptionHandling()
+                        .accessDeniedPage("/403");
     }
 }

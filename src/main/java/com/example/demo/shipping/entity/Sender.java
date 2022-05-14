@@ -21,8 +21,8 @@ public class Sender {
     @Column(name = "SURNAME")
     private String surname;
 
-    @Column(name = "EMAIL")
-    private String email;
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
 
     @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Shipment> shipmentList;

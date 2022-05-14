@@ -21,6 +21,9 @@ public class Postman {
     @Column(name = "SURNAME")
     private String surname;
 
+    @Column(name = "PHONE_NUMBER")
+    private String phoneNumber;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "postman", cascade = CascadeType.ALL)
     private List<Shipment> shipmentList;
 

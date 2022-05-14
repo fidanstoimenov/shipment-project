@@ -5,7 +5,6 @@ import com.example.demo.shipping.entity.Postman;
 import com.example.demo.shipping.entity.Sender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
@@ -19,13 +18,13 @@ public class ShipmentAspect {
     private final AuthenticationService authenticationService;
 
     @After("execution(* com.example.demo.shipping.service.ShipmentService.save(..))")
-    public void saveShipmentPointCut(JoinPoint joinPoint) {
+    public void saveShipmentPointCut() {
         Sender sender = authenticationService.sender();
         log.info("New shipment created! -> Sender : " + sender.fullName());
     }
 
     @After("execution(* com.example.demo.shipping.service.ShipmentService.retrieveShipmentsByPostmanId(..))")
-    public void retrieveShipmentPointCut(JoinPoint joinPoint) {
+    public void retrieveShipmentPointCut() {
         Postman postman = authenticationService.postman();
         log.info("All shipments retrieved! -> Postman : " + postman.fullName());
     }

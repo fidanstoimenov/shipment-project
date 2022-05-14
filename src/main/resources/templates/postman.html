@@ -23,7 +23,7 @@
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Sender</th>
-            <th scope="col">Sender Email</th>
+            <th scope="col">Phone Number</th>
             <th scope="col">City</th>
             <th scope="col">Address Details</th>
             <th scope="col">Shipping Tags</th>
@@ -33,7 +33,7 @@
         <tr th:each="shipment: ${shipmentList}">
             <td th:text="${shipment.id}"/>
             <td th:text="${shipment.sender.fullName()}"/>
-            <td th:text="${shipment.sender.email}"/>
+            <td th:text="${shipment.sender.phoneNumber}"/>
             <td th:text="${shipment.address.city}"/>
             <td th:text="${shipment.address.address}"/>
             <td th:text="${shipment.tagList}"/>
